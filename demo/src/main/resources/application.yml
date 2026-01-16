@@ -1,0 +1,19 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      ssl:
+       enable: true
+      password: 1234
+
+    mongodb:
+      uri: mongodb://localhost:27017/users
+      auto-index-creation: true
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+server:
+  port: 8080

@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import com.example.practice.demo.repository.UserRepository
 import com.example.practice.demo.utils.JwtUtils
+import org.springframework.cache.annotation.CachePut
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.cache.annotation.Caching
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetails
@@ -26,7 +29,6 @@ open class UserService  : UserDetailsService{
         val jwtToken = JwtUtils.generateToken(email)
         return user?.copy(token = jwtToken)
     }
-
 
     fun saveUser(user : UserModel) {
         userRepository?.save(user)

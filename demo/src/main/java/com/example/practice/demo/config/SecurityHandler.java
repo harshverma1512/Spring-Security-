@@ -34,7 +34,7 @@ public class SecurityHandler {
         http.csrf(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/signup", "/user/login").permitAll() // <-- must allow this
+                .requestMatchers("/user/signup", "/user/login", "/restaurant/**").permitAll() // <-- must allow this
                 .anyRequest().authenticated()
         );
 
