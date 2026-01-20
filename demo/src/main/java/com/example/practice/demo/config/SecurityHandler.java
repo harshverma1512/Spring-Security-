@@ -1,7 +1,6 @@
 package com.example.practice.demo.config;
 
 
-
 import com.example.practice.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -33,10 +32,8 @@ public class SecurityHandler {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
 
-        http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/signup", "/user/login", "/restaurant/**").permitAll() // <-- must allow this
-                .anyRequest().authenticated()
-        );
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/auth/signup", "/auth/login", "/restaurant/**").permitAll() // <-- must allow this
+                .anyRequest().authenticated());
 
         http.httpBasic(Customizer.withDefaults());
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
